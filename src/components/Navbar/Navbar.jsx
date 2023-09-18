@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Link from "../Link/Link";
-import { HiMenuAlt2 } from 'react-icons/Hi';
-import { AiOutlineClose } from 'react-icons/Ai';
+import { HiMenuAlt2 } from "react-icons/Hi";
+import { AiOutlineClose } from "react-icons/Ai";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -14,15 +14,16 @@ const Navbar = () => {
   ];
 
   return (
-    <nav>
-      <div className="md:hidden text-3xl" onClick={()=> setOpen(!open)}>
-        {
-          open === true ? <AiOutlineClose></AiOutlineClose>:<HiMenuAlt2></HiMenuAlt2>
-        }
-      
+    <nav className="text-black bg-yellow-200 p-6">
+      <div className="md:hidden text-3xl" onClick={() => setOpen(!open)}>
+        {open === true ? <AiOutlineClose></AiOutlineClose> : <HiMenuAlt2></HiMenuAlt2>}
       </div>
-      <ul className="md:flex">
-      {routes.map((route) => <Link key={route.id} route={route}></Link>)}
+      <ul className={`md:flex absolute md:static duration-1000
+      ${open ? 'top-16': '-top-60'}
+      bg-yellow-200 px-6`}>
+        {routes.map((route) => (
+          <Link key={route.id} route={route}></Link>
+        ))}
       </ul>
     </nav>
   );
